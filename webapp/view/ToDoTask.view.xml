@@ -1,0 +1,5 @@
+<mvc:View controllerName="nl.newitera.to-do-demo-pwa.controller.ToDoTask" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Page title="{title}" showNavButton="true" navButtonPress="onBack">
+		<Text text="{description}"/>
+	</Page>
+</mvc:View>
