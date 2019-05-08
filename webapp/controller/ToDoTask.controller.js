@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/routing/History"
-], function (Controller, History) {
+	"sap/ui/core/routing/History",
+	"../model/firestore-todo"
+], function (Controller, History, firestoreTodo) {
 	"use strict";
 
 	return Controller.extend("nl.newitera.to-do-demo-pwa.controller.ToDoTask", {
@@ -12,8 +13,15 @@ sap.ui.define([
 		
 		onRouteMatched: function(oEvent) {
 			this.getView().bindElement({
-				path: "/ToDoThings/" + oEvent.getParameter("arguments").id
+				path: "todo>/" + oEvent.getParameter("arguments").id
 			});
+		},
+		
+		onCheckItem: function(oEvent) {
+		    var bSelected = oEvent.getParameter("selected");
+		    var oContext = oEvent.getSource().getBindingContext("todo");
+		    var selectedId = oContext.getModel().getProperty(oContext.getPath() + "/id");
+		    firestoreTodo.setSelected(selectedId, bSelected);
 		},
 		
 		onBack: function(){

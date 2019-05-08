@@ -14,7 +14,17 @@
 			data-sap-ui-frameOptions="trusted">
 		</script>
 	</head>
-	<body class="sapUiBody">
-		<div data-sap-ui-component data-name="nl.newitera.to-do-demo-pwa" data-id="container" data-settings='{"id" : "to-do-demo-pwa"}'></div>
-	</body>
+	<body>
+	    <div class="sapUiBody">
+    		<div data-sap-ui-component data-name="nl.newitera.to-do-demo-pwa" data-id="container" data-settings='{"id" : "to-do-demo-pwa"}'></div>
+	    </div>
+	    
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-firestore.js"></script>
+        
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#config-web-app -->
+    </body>
+	
 </html>
