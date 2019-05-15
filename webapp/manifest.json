@@ -50,12 +50,6 @@
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.40.12"
-		},
-		"dataSources":{
-			"to-do":{
-				"uri": "model/to-do-mock.json",
-				"type": "JSON"
-			}
 		}
 	},
 
@@ -102,10 +96,6 @@
 				"settings": {
 					"bundleName": "nl.newitera.to-do-demo-pwa.i18n.i18n"
 				}
-			},
-			"": {
-				"type": "sap.ui.model.json.JSONModel",
-				"dataSource": "to-do"
 			}
 		},
 		"resources": {

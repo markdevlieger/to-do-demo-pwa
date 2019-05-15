@@ -3,13 +3,13 @@
 		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>toDoTaskFormTitle}">
 			<f:content>
 				<Label text="{i18n>TaskFormLabelTitle}" />
-				<Input value="{title}" />
+				<Input value="{todo>title}" />
 				
 				<Label text="{i18n>TaskFormLabelDone}" />
-				<CheckBox selected="{done}" />
+				<CheckBox selected="{todo>done}" select="onCheckItem"/>
 				
 				<Label text="{i18n>TaskFormLabelDescription}" />
-				<TextArea value="{description}" />
+				<TextArea value="{todo>description}" />
 			</f:content>
 			
 		</f:SimpleForm>
