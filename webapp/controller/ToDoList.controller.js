@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"../model/firestore-todo"
-], function (Controller, firestoreTodo) {
+	"../model/firestore-todo",
+	"../utils/FragmentDialog"
+], function (Controller, firestoreTodo, FragmentDialog) {
 	"use strict";
 
 	return Controller.extend("nl.newitera.to-do-demo-pwa.controller.ToDoList", {
@@ -25,6 +26,31 @@ sap.ui.define([
 		
 		onTest: function() {
 		    
+		},
+		
+		addTask: {
+			_dialog: null,
+			openDialog: function() {
+				var that = this;
+				this.addTask._dialog = FragmentDialog.open("nl.newitera.to-do-demo-pwa.view.AddTodo", {
+			    	dialogData: {
+			    		title: "",
+			    		description: ""
+			    	},
+			    	controller: {
+			    		onAdd: function() {
+			    			var m = that.addTask._dialog.getDialogData();
+			    			that.addTask._dialog.setBusy(true);
+			    			firestoreTodo.addTodo(m.title, m.description, {
+			    				success: function(){
+			    					that.addTask._dialog.close();
+			    				}
+			    			});
+			    		}
+			    	},
+			    	i18nModel: this.getOwnerComponent().getModel("i18n")
+			    });
+			}
 		}
 	});
 });
