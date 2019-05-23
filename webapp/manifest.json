@@ -1,5 +1,43 @@
 {
 	"_version": "1.12.0",
+	"name": "To Do Demo",
+	"short_name": "ToDo",
+	"icons": [
+		{
+			"src": "icons/icon-128x128.png",
+			"sizes": "128x128",
+			"type": "image/png"
+		},
+		{
+			"src": "icons/icon-144x144.png",
+			"sizes": "144x144",
+			"type": "image/png"
+		},
+		{
+			"src": "icons/icon-152x152.png",
+			"sizes": "152x152",
+			"type": "image/png"
+		},
+		{
+			"src": "icons/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "icons/icon-256x256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		},
+		{
+			"src": "icons/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"start_url": "index.html",
+	"display": "standalone",
+	"background_color": "#FFFFFF",
+	"theme_color": "#427CAC",
 	"sap.app": {
 		"id": "nl.newitera.to-do-demo-pwa",
 		"type": "application",
@@ -14,7 +52,6 @@
 			"version": "1.40.12"
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -31,7 +68,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
@@ -61,9 +97,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -75,19 +113,29 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "RouteMain",
-				"pattern": "RouteMain",
-				"target": ["TargetMain"]
-			}, {
-				"name": "RouteList",
-				"pattern": "",
-				"target":["TargetList"]
-			}, {
-				"name": "RouteTask",
-				"pattern": "task/{id}",
-				"target": ["TargetTask"]
-			}],
+			"routes": [
+				{
+					"name": "RouteMain",
+					"pattern": "RouteMain",
+					"target": [
+						"TargetMain"
+					]
+				},
+				{
+					"name": "RouteList",
+					"pattern": "",
+					"target": [
+						"TargetList"
+					]
+				},
+				{
+					"name": "RouteTask",
+					"pattern": "task/{id}",
+					"target": [
+						"TargetTask"
+					]
+				}
+			],
 			"targets": {
 				"TargetMain": {
 					"viewType": "XML",
@@ -105,12 +153,16 @@
 				},
 				"TargetTask": {
 					"viewType": "XML",
-					"transition":"slide",
+					"transition": "slide",
 					"clearControlAggregation": false,
 					"viewId": "ToDoTask",
 					"viewName": "ToDoTask"
 				}
 			}
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }
