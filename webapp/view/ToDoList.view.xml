@@ -2,7 +2,7 @@
 	<Page title="{i18n>toDoListTitle}">
 		<content>
 			<List id="ToDoList" includeItemInSelection="false" items="{todo>/}">
-				<CustomListItem>
+				<CustomListItem type="Navigation" press="onPressTask">
 					<HBox alignItems="Center">
 						<CheckBox selected="{todo>done}" select="onCheckItem"/>
 						<ObjectIdentifier title="{todo>title}" titleActive="true" titlePress="onPressTask"/>
