@@ -6,9 +6,7 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("nl.newitera.to-do-demo-pwa.controller.ToDoList", {
-		onInit: function () {
-
-		},
+	
 		
 		onPressTask: function(oEvent) {
 			this.getOwnerComponent().getRouter().navTo(
@@ -24,9 +22,7 @@ sap.ui.define([
 		    firestoreTodo.setSelected(selectedId, bSelected);
 		},
 		
-		onTest: function() {
-		    
-		},
+	
 		
 		addTask: {
 			_dialog: null,
