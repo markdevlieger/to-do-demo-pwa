@@ -12,11 +12,10 @@
 				<TextArea value="{todo>description}" change="onChangeDescription"/>
 				
 				<Label></Label>
-				<Button text="Delete" press="onDelete"/>
+				<Button text="Save" press="onBack" visible="false"/>
+				<Button text="Delete" press="onDelete" type="Reject"/>
 			</f:content>
 			
 		</f:SimpleForm>
-	
-		
 	</Page>
 </mvc:View>
