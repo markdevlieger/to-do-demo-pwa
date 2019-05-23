@@ -18,7 +18,7 @@ sap.ui.define([
 		 * @override
 		 */
 		init: function () {
-			// call the base component"s init function
+			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 
 			// enable routing
@@ -27,7 +27,7 @@ sap.ui.define([
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
 			
-			this.setModel(firestoreTodo.getModel(), "todo");
+			this.setModel(firestoreTodo, "todo");
 		}
 	});
 });
