@@ -27,6 +27,16 @@ sap.ui.define([
 			this.setProperty(`/${sId}/done`, (bSelected));
 			FireStore.collection("todo").doc(sId).set({done: (bSelected)}, {merge:true});
 		},
+		           
+		setTitle: function(sId, sTitle) {   
+			this.setProperty(`/${sId}/title`, sTitle);
+			FireStore.collection("todo").doc(sId).set({title: sTitle}, {merge:true});
+		},
+		
+		setDescription: function(sId, sDescription) {   
+			this.setProperty(`/${sId}/description`, sDescription);
+			FireStore.collection("todo").doc(sId).set({description: sDescription}, {merge:true});
+		},
 		
 		addItem: function(sTitle, sDescription, mParams) {
 			var mData = {
@@ -47,6 +57,22 @@ sap.ui.define([
 				}
 			});
 
+		},
+		
+		deleteItem: function(sId, mParams) {
+			var that = this;
+			FireStore.collection("todo").doc(sId).delete().then(function() {
+				var m = that.getProperty("/");
+				delete m[sId];
+				that.setProperty("/", m);
+				if (typeof mParams === "object" && "success" in mParams && typeof mParams.success === "function") {
+					mParams.success();
+				}
+			}).catch(function(error) {
+			    if (typeof mParams === "object" && "error" in mParams && typeof mParams.success === "error") {
+				   mParams.error(error);
+				}
+			});
 		}
 	})
 	

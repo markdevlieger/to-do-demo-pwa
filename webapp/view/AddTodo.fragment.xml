@@ -12,7 +12,7 @@
 			<Label text="{i18n>TaskFormLabelTitle}"/>
 			<Input value="{Dialog>/title}"/>
 			<Label text="{i18n>TaskFormLabelDescription}"/>
-			<Input value="{Dialog>/description}"/>
+			<TextArea value="{Dialog>/description}" width="100%"/>
 		</content>
 		<buttons>
 			<Button 
