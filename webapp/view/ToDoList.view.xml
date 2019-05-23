@@ -10,5 +10,12 @@
 				</CustomListItem>
 			</List>
 		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button text="{i18n>toDoListAdd}" press=".addTask.openDialog" type="Emphasized"/>
+				</contentLeft>
+			</Bar>
+		</footer>
 	</Page>
 </mvc:View>
