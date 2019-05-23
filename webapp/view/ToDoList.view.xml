@@ -12,9 +12,9 @@
 		</content>
 		<footer>
 			<Bar>
-				<contentRight>
-					<Button text="{i18n>toDoListAdd}" press=".addTask.openDialog"/>
-				</contentRight>
+				<contentLeft>
+					<Button text="{i18n>toDoListAdd}" press=".addTask.openDialog" type="Emphasized"/>
+				</contentLeft>
 			</Bar>
 		</footer>
 	</Page>

@@ -41,7 +41,7 @@ sap.ui.define([
 			    		onAdd: function() {
 			    			var m = that.addTask._dialog.getDialogData();
 			    			that.addTask._dialog.setBusy(true);
-			    			firestoreTodo.addTodo(m.title, m.description, {
+			    			firestoreTodo.addItem(m.title, m.description, {
 			    				success: function(){
 			    					that.addTask._dialog.close();
 			    				}

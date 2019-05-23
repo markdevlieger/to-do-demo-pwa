@@ -27,7 +27,7 @@ sap.ui.define([
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
 			
-			this.setModel(firestoreTodo.getModel(), "todo");
+			this.setModel(firestoreTodo, "todo");
 		}
 	});
 });

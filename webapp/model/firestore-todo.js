@@ -1,48 +1,54 @@
 sap.ui.define([
 	"./firestore",
 	"sap/ui/model/json/JSONModel"
-], function (firestore, JSONModel) {
+], function (FireStore, JSONModel) {
 
-	var oTodoModel = new JSONModel();
-
-
-	var fnReload = function() {
-		firestore.collection("todo").get().then(
-			(snapshot) => {
-				var aModelData = [];
-				snapshot.forEach((doc) => {
-					var data = doc.data();
-					data.id = doc.id;
-					aModelData.push(data);
+	var oTodoModel = JSONModel.extend("firestore-todo", {
+	
+		constructor: function() {
+			JSONModel.apply(this, arguments);
+			$.proxy(this.reload, this)();
+		},
+		
+		reload: function(mParameters) {
+			var that = this;
+			FireStore.collection("todo").get().then(function(aSnapshot){
+				var mModelData = {};
+				aSnapshot.forEach(oDoc => {
+					var mData = oDoc.data();
+					mData.id = oDoc.id;
+					mModelData[mData.id] = mData;
 				});
-				oTodoModel.setData(aModelData);
-			}
-		);
-	};
-	fnReload();
-
-	return {
-		getModel: function () {
-			return oTodoModel;
+				that.setData(mModelData);
+			});
 		},
 		
 		setSelected: function(sId, bSelected) {
-		    firestore.collection("todo").doc(sId).set({done: bSelected}, {merge:true});
+			this.setProperty(`/${sId}/done`, (bSelected));
+			FireStore.collection("todo").doc(sId).set({done: (bSelected)}, {merge:true});
 		},
 		
-		addTodo: function(sTitle, sDescription, mParams) {
+		addItem: function(sTitle, sDescription, mParams) {
 			var mData = {
-			    title: sTitle,
-			    description: sDescription,
-			    done: false
-			};
-			firestore.collection("todo").add(mData).then(function(docRef) {
-				fnReload();
-				mParams.success();
+				    title		: sTitle,
+				    description	: sDescription,
+				    done		: false
+				};
+			var that = this;
+			FireStore.collection("todo").add(mData).then(function(docRef) {
+				mData.id = docRef.id;
+				that.setProperty(`/${mData.id }`, mData);
+				if (typeof mParams === "object" && "success" in mParams && typeof mParams.success === "function") {
+					mParams.success(mData);
+				}
 			}).catch(function(error) {
-			    console.error("Error adding document: ", error);
+				if (typeof mParams === "object" && "error" in mParams && typeof mParams.success === "error") {
+				   mParams.error(error);
+				}
 			});
 
 		}
-	}
+	})
+	
+	return new oTodoModel();
 });
